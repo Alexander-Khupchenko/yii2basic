@@ -12,7 +12,7 @@ $config = [
             'cookieValidationKey' => 'qwertyuiop',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => false,
             'showScriptName' => false,
             'rules' => [
                 'about' => 'site/about'
