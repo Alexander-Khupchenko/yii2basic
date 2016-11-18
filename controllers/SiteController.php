@@ -172,10 +172,13 @@ class SiteController extends Controller
                 ->limit($pagination->limit)
                 ->all();
         
+        $cookies = Yii::$app->request->cookies;
+        
         return $this->render('comments', [
             'comments' => $comments,
             'pagination' => $pagination,
-            'name' => Yii::$app->session->get('name')
+            //'name' => Yii::$app->session->get('name')
+            'name' => $cookies->getValue('name')
         ]);
     }
     
@@ -183,10 +186,14 @@ class SiteController extends Controller
     {
         $name = Yii::$app->request->get("name");
         
-        $session = Yii::$app->session;
+        //$session = Yii::$app->session;
         $cookies = Yii::$app->response->cookies;
         
-        $session->set('name', $name);
+        //$session->set('name', $name);
+        $cookies->add(new \yii\web\Cookie([
+            'name' => 'name',
+            'value' => $name
+        ]));
         
         return $this->render('user', [
            'name' => $name 
