@@ -7,13 +7,9 @@
  */
 
 namespace app\controllers;
+
 use yii\web\Controller;
 
-/**
- * Description of AppController
- *
- * @author User
- */
 class AppController extends Controller {
     
     public function debbug($arr) {
