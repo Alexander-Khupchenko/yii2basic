@@ -15,5 +15,8 @@ use yii\web\Controller;
  * @author User
  */
 class AppController extends Controller {
-    //put your code here
+    
+    public function debbug($arr) {
+        echo '<pre>' . print_r($arr, true) . '</pre>';
+    }
 }
