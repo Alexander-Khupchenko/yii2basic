@@ -11,7 +11,8 @@ AppAsset::register($this);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Document</title>
+        <?= Html::csrfMetaTags() ?>
+        <title><?= $this->title ?></title>
         <?php $this->head() ?>
     </head>
     <body>
@@ -19,11 +20,16 @@ AppAsset::register($this);
         
         <div class="wrap">
             <div class="container">
+                
                 <ul class="nav nav-pills">
                     <li role="presentation" class="active"><?= Html::a('Главная', '/yii2basic/web/') ?></li>
                     <li role="presentation"><?= Html::a('Статьи', ['posstt/index']) ?></li>
                     <li role="presentation"><?= Html::a('Статья', ['posstt/show']) ?></li>
                 </ul>
+                
+                <?php if(isset($this->blocks['block1'])): ?>
+                    <?php echo $this->blocks['block1'] ?>
+                <?php endif; ?>
                 
                 <?= $content ?>
                 

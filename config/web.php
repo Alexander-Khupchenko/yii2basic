@@ -47,7 +47,7 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        'urlManager' => [
+        /*'urlManager' => [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'rules' => [
@@ -58,7 +58,7 @@ $config = [
                 'page/<page:\d+>' => 'post/index',
                 '/' => 'post/index',
             ],
-        ],
+        ],*/
     ],
     'params' => $params,
 ];
