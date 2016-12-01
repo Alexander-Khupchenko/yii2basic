@@ -7,7 +7,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'ru',
-    //'layout' => 'basic',
+    'layout' => 'main',
     'defaultRoute' => 'post/index',
     'modules' => [
         'admin' => [
@@ -48,18 +48,19 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*'urlManager' => [
-            'showScriptName' => false,
+        'urlManager' => [
             'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'suffix' => '.html',
             'rules' => [
-                //'test' => 'post/test'
-                '<action>' => 'post/<action>', // == 'test' => 'post/action'
-                '<action>' => 'site/<action>', // == 'site' => 'site/action'
-                'post/<id:\d+>' => 'post/view',
-                'page/<page:\d+>' => 'post/index',
-                '/' => 'post/index',
+                [
+                    'pattern' => '',
+                    'route' => 'site/index',
+                    'suffix' => ''
+                ],
+                '<action:(about|contact|login)>' => 'site/<action>',
             ],
-        ],*/
+        ],
     ],
     'params' => $params,
 ];

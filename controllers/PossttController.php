@@ -33,9 +33,21 @@ class PossttController extends AppController {
             return 'test';
         }
         
+        //$post = TestForm::findOne();
+//        $post->email = '2@2.com';
+//        $post->save();
+        
+        //$post->deleteAll();
+        
+        
         $model = new TestForm();
+//        $model->name = 'Автор';
+//        $model->email = 'mail@mail.com';
+//        $model->text = 'Текст сообщения';
+//        $model->save();    
+        
         if($model->load(Yii::$app->request->post()) ) {
-            if($model->validate()) {
+            if($model->save()) {
                 Yii::$app->session->setFlash('success', 'Данные приняты');
                 return $this->refresh();
             }else {
@@ -63,8 +75,16 @@ class PossttController extends AppController {
 //        $cats = Category::find()->asArray()->where('parent=1')->count(); 
 //        $cats = Category::findOne(['parent' => 2]); 
 //        $cats = Category::findAll(['parent' => 2]); 
-        $query = "SELECT * FROM categories WHERE title LIKE '%ni%'";
-        $cats = Category::findBySql($query)->all();
+//        $query = "SELECT * FROM categories WHERE title LIKE '%ni%'";
+//        $cats = Category::findBySql($query)->all();
+//        $query = "SELECT * FROM categories WHERE title LIKE :search";
+//        $cats = Category::findBySql($query, [':search' => '%ni%'])->all();
+        
+//        $cats = Category::findOne(5);
+//        $cats = Category::find()->with('products')->where('id=5')->all();
+        
+//        $cats = Category::find()->all(); // отложенная (ленивая) загрузка
+        $cats = Category::find()->with('products')->all(); // жадная загрузка
 
         return $this->render('show', compact('cats'));
     }
